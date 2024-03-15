@@ -1,6 +1,6 @@
 package period;
 
-public enum Periodicità {
+public enum Periodicita {
     SETTIMANALE,
     MENSILE,
     SEMESTRALE

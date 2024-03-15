@@ -2,7 +2,7 @@ package org.example;
 
 import java.time.LocalDate;
 
-public class Libri {
+public class Libri implements Prodotto{
     private int ISBN;
     private String title;
     private LocalDate pubblication;
@@ -22,8 +22,32 @@ public class Libri {
         return ISBN;
     }
 
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPubblication(LocalDate pubblication) {
+        this.pubblication = pubblication;
+    }
+
+    public void setPagesnumber(int pagesnumber) {
+        this.pagesnumber = pagesnumber;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getGenere() {
         return genere;
+    }
+
+    public void setGenere(String genere) {
+        this.genere = genere;
     }
 
     public String getTitle() {

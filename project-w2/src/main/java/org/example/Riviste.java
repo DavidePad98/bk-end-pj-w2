@@ -1,26 +1,26 @@
 package org.example;
 
-import period.Periodicità;
+import period.Periodicita;
 
 import java.time.LocalDate;
 
-public class Riviste {
+public class Riviste implements Prodotto{
     private int ISBN;
     private String title;
     private LocalDate pubblication;
     private int pagesnumber;
-    private Periodicità periodicità;
+    private Periodicita periodicità;
 
-    public Riviste(int ISBN, String title, LocalDate pubblication, int pagesnumber, Periodicità periodicità){
+    public Riviste(int ISBN, String title, LocalDate pubblication, int pagesnumber, Periodicita periodicita){
         this.ISBN = ISBN;
         this.title = title;
         this.pubblication = pubblication;
         this.pagesnumber = pagesnumber;
-        this.periodicità = periodicità;
+        this.periodicità = periodicita;
 
     }
 
-    public Periodicità getPeriodicità() {
+    public Periodicita getPeriodicità() {
         return periodicità;
     }
 
