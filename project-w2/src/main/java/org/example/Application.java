@@ -56,11 +56,17 @@ public class Application {
         System.out.println("------------------------------------------");
         bookList.forEach(book -> System.out.println(book));
 
+
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
         System.out.println("-----------ES1-------------");
         System.out.println("vuoi aggiungere un libro o una rivista? l/r");
         String s = scn.nextLine();
 
-        if (s.equals("l")) {
+        if (s.equalsIgnoreCase("l")) {
             System.out.println("aggiungi un libro partendo dal nuovo codice univoco (ISBN):");
             int newISBN = scn.nextInt();
             scn.nextLine();
@@ -92,7 +98,7 @@ public class Application {
                 System.out.println("ecco il tuo nuovo libro: " + nuovoLibro);
                 bookList.add(nuovoLibro);
             }
-        } else if (s.equals("r")) {
+        } else if (s.equalsIgnoreCase("r")) {
             System.out.println("aggiungi una rivista partendo dal nuovo codice univoco (ISBN):");
             int newMagISBN = scn.nextInt();
             scn.nextLine();
@@ -140,14 +146,13 @@ public class Application {
             }
         } else {
             System.out.println("arrivederci.");
-//        }
 
         System.out.println("-----------ES2-------------");
                 System.out.println("vuoi rimuovere elemento? s/n");
         String a = scn.nextLine();
 
         boolean isbnExists = false;
-        if (a.equals("s")){
+        if (a.equalsIgnoreCase("s")){
             System.out.println("inserisci il codice univoco(ISBN):");
         int isbn = scn.nextInt();
 
@@ -232,6 +237,6 @@ public class Application {
             System.out.println(e.getMessage());
         }
     }
-}
+}}
 
 
