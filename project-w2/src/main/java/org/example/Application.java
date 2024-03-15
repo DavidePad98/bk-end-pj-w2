@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -56,189 +57,139 @@ public class Application {
         bookList.forEach(book -> System.out.println(book));
 
         System.out.println("-----------ES1-------------");
-//        System.out.println("vuoi aggiungere un libro o una rivista? l/r");
-//        String s = scn.nextLine();
-//
-//        if (s.equals("l")) {
-//            System.out.println("aggiungi un libro partendo dal nuovo codice univoco (ISBN):");
-//            int newISBN = scn.nextInt();
-//            scn.nextLine();
-//
-//            boolean isbnExists = bookList.stream()
-//                    .anyMatch(libro -> libro.getISBN() == newISBN);
-//
-//            if (isbnExists) {
-//                System.out.println("esiste già un libro con questo codice ISBN, riprova.");
-//            } else {
-//                System.out.println("inserisci il titolo:");
-//                String newTitle = scn.nextLine();
-//                System.out.println("inserisci la data di pubblicazione:");
-//                System.out.println("giorno:");
-//                int day = scn.nextInt();
-//                System.out.println("mese:");
-//                int month = scn.nextInt();
-//                System.out.println("anno:");
-//                int year = scn.nextInt();
-//                System.out.println("quante pagine ha il prodotto?");
-//                int pages = scn.nextInt();
-//                scn.nextLine();
-//
-//                System.out.println("ho trovato autore e genere del tuo libro.");
-//                String author = faker.dragonBall().character();
-//                String genres = faker.book().genre();
-//
-//                Libri nuovoLibro = new Libri(newISBN, newTitle, LocalDate.of(year, month, day), pages, author, genres);
-//                System.out.println("ecco il tuo nuovo libro: " + nuovoLibro);
-//                bookList.add(nuovoLibro);
-//            }
-//        } else if (s.equals("r")) {
-//            System.out.println("aggiungi una rivista partendo dal nuovo codice univoco (ISBN):");
-//            int newMagISBN = scn.nextInt();
-//            scn.nextLine();
-//
-//            boolean isbnExists = magazineList.stream()
-//                    .anyMatch(rivista -> rivista.getISBN() == newMagISBN);
-//
-//            if (isbnExists) {
-//                System.out.println("esiste già una rivista con questo codice ISBN, riprova.");
-//            } else {
-//                System.out.println("inserisci il titolo:");
-//                String newMagTitle = scn.nextLine();
-//                System.out.println("inserisci la data di pubblicazione:");
-//                System.out.println("giorno:");
-//                int dayMag = scn.nextInt();
-//                System.out.println("mese:");
-//                int monthMag = scn.nextInt();
-//                System.out.println("anno:");
-//                int yearMag = scn.nextInt();
-//                System.out.println("quante pagine ha il prodotto?");
-//                int pagesMag = scn.nextInt();
-//                scn.nextLine();
-//
-//                Riviste nuovaRivista = new Riviste(newMagISBN, newMagTitle, LocalDate.of(yearMag, monthMag, dayMag), pagesMag, Periodicita.SETTIMANALE);
-//                System.out.println("ecco la tua nuova rivista: " + nuovaRivista);
-//                magazineList.add(nuovaRivista);
-//            }
-//        } else {
-//            System.out.println("arrivederci.");
+        System.out.println("vuoi aggiungere un libro o una rivista? l/r");
+        String s = scn.nextLine();
+
+        if (s.equals("l")) {
+            System.out.println("aggiungi un libro partendo dal nuovo codice univoco (ISBN):");
+            int newISBN = scn.nextInt();
+            scn.nextLine();
+
+            boolean isbnExists = bookList.stream()
+                    .anyMatch(libro -> libro.getISBN() == newISBN);
+
+            if (isbnExists) {
+                System.out.println("esiste già un libro con questo codice ISBN, riprova.");
+            } else {
+                System.out.println("inserisci il titolo:");
+                String newTitle = scn.nextLine();
+                System.out.println("inserisci la data di pubblicazione:");
+                System.out.println("giorno:");
+                int day = scn.nextInt();
+                System.out.println("mese:");
+                int month = scn.nextInt();
+                System.out.println("anno:");
+                int year = scn.nextInt();
+                System.out.println("quante pagine ha il prodotto?");
+                int pages = scn.nextInt();
+                scn.nextLine();
+
+                System.out.println("ho trovato autore e genere del tuo libro.");
+                String author = faker.dragonBall().character();
+                String genres = faker.book().genre();
+
+                Libri nuovoLibro = new Libri(newISBN, newTitle, LocalDate.of(year, month, day), pages, author, genres);
+                System.out.println("ecco il tuo nuovo libro: " + nuovoLibro);
+                bookList.add(nuovoLibro);
+            }
+        } else if (s.equals("r")) {
+            System.out.println("aggiungi una rivista partendo dal nuovo codice univoco (ISBN):");
+            int newMagISBN = scn.nextInt();
+            scn.nextLine();
+
+            boolean isbnExists = magazineList.stream()
+                    .anyMatch(rivista -> rivista.getISBN() == newMagISBN);
+
+            if (isbnExists) {
+                System.out.println("esiste già una rivista con questo codice ISBN, riprova.");
+            } else {
+                System.out.println("inserisci il titolo:");
+                String newMagTitle = scn.nextLine();
+                System.out.println("inserisci la data di pubblicazione:");
+                System.out.println("giorno:");
+                int dayMag = scn.nextInt();
+                System.out.println("mese:");
+                int monthMag = scn.nextInt();
+                System.out.println("anno:");
+                int yearMag = scn.nextInt();
+                System.out.println("quante pagine ha il prodotto?");
+                int pagesMag = scn.nextInt();
+                scn.nextLine();
+                System.out.println("con che periodicità vuoi che sia l'uscita?");
+                String periodOut = scn.nextLine();
+                Periodicita periodicita;
+                switch (periodOut.toUpperCase()){
+                    case "SETTIMANALE":
+                        periodicita = Periodicita.SETTIMANALE;
+                        break;
+                    case"MENSILE":
+                        periodicita = Periodicita.MENSILE;
+                        break;
+                    case "SEMESTRALE":
+                        periodicita = Periodicita.SEMESTRALE;
+                        break;
+                    default:
+                        System.out.println("il periodo di uscita non è accettabile, abbiamo scelto per te settimanalemtne");
+                        periodicita = Periodicita.SETTIMANALE;
+                        break;
+                }
+
+                Riviste nuovaRivista = new Riviste(newMagISBN, newMagTitle, LocalDate.of(yearMag, monthMag, dayMag), pagesMag, periodicita);
+                System.out.println("ecco la tua nuova rivista: " + nuovaRivista);
+                magazineList.add(nuovaRivista);
+            }
+        } else {
+            System.out.println("arrivederci.");
 //        }
-
-
-
-//        if (s.equals("l")){
-//            System.out.println("aggiungi un libro partendo dal nuovo codice univoco(ISBN):");
-//            int newISBN = scn.nextInt();
-//            scn.nextLine();
-//            Iterator<Libri> isbniter = bookList.iterator();
-//            while(isbniter.hasNext()){
-//                Libri libroAdd = isbniter.next();
-//                if (newISBN == libroAdd.getISBN()) {
-//                    isbnExists = true;
-//                    System.out.println("esiste già questo codice, riprova");
-//                    break;
-//                }
-//                }
-//            if (!isbnExists){
-//                System.out.println("Inserisci il titolo:");
-//                String newTitle = scn.nextLine();
-//                System.out.println("inserisci la data di pubblicazione:");
-//                System.out.println("giorno");
-//                int day = scn.nextInt();
-//                System.out.println("mese");
-//                int month = scn.nextInt();
-//                System.out.println("anno");
-//                int year = scn.nextInt();
-//                System.out.println("quante pagine ha il prodotto?");
-//                int pages = scn.nextInt();
-//                System.out.println("ho trovato autore e genere del tuo libro");
-//                String author = faker.dragonBall().character();
-//                String genres = faker.book().genre();
-//
-//                Libri nuovoLibro = new Libri(newISBN, newTitle, LocalDate.of(year, month, day), pages, author, genres);
-//                System.out.println("ecco il tuo nuovo libro: " + nuovoLibro);
-//                bookList.add(nuovoLibro);
-//            }
-//
-//            scn.close();
-//        } else if (s.equals("r")) {
-//            System.out.println("aggiungi un rivista partendo dal nuovo codice univoco(ISBN):");
-//            int newMagISBN = scn.nextInt();
-//            scn.nextLine();
-//            Iterator<Riviste> isbniterMag = magazineList.iterator();
-//            while(isbniterMag.hasNext()){
-//                Riviste magAdd = isbniterMag.next();
-//                if (newMagISBN == magAdd.getISBN()) {
-//                    isbnExists = true;
-//                    System.out.println("esiste già questo codice, riprova");
-//                    break;
-//                }
-//            }
-//            if (!isbnExists){
-//                System.out.println("Inserisci il titolo:");
-//                String newMagTitle = scn.nextLine();
-//                System.out.println("inserisci la data di pubblicazione:");
-//                System.out.println("giorno");
-//                int dayMag = scn.nextInt();
-//                System.out.println("mese");
-//                int monthMag = scn.nextInt();
-//                System.out.println("anno");
-//                int yearMag = scn.nextInt();
-//                System.out.println("quante pagine ha il prodotto?");
-//                int pagesMag = scn.nextInt();
-//
-//                Riviste nuovaRivista = new Riviste(newMagISBN, newMagTitle, LocalDate.of(yearMag, monthMag, dayMag), pagesMag, Periodicita.SETTIMANALE);
-//                System.out.println("ecco la tua nuova rivista: " + nuovaRivista);
-//                magazineList.add(nuovaRivista);
-//            }
-//        } else scn.close();
 
         System.out.println("-----------ES2-------------");
-//                System.out.println("vuoi rimuovere elemento? s/n");
-//        String a = scn.nextLine();
-//
-//        if (a.equals("s")){
-//            System.out.println("inserisci il codice univoco(ISBN):");
-//        int isbn = scn.nextInt();
-//
-//
-//            Iterator<Prodotto> iterator = prodottoList.iterator();
-//            while (iterator.hasNext()) {
-//                Prodotto product = iterator.next();
-//                if (isbn == product.getISBN()) {
-//                    isbnExists = true;
-//                    iterator.remove();
-//                    System.out.println("hai rimosso l'elemento: " + product);
-//                    break;
-//                }
-//            }
-//            if (!isbnExists) {
-//                System.out.println("errore: il libro con ISBN " + isbn + " non esiste nella lista.");
-//            }
-//        } else System.out.println("arrivederci");
-//
-//        prodottoList.forEach(System.out::println);
+                System.out.println("vuoi rimuovere elemento? s/n");
+        String a = scn.nextLine();
+
+        boolean isbnExists = false;
+        if (a.equals("s")){
+            System.out.println("inserisci il codice univoco(ISBN):");
+        int isbn = scn.nextInt();
+
+
+            Iterator<Prodotto> iterator = prodottoList.iterator();
+            while (iterator.hasNext()) {
+                Prodotto product = iterator.next();
+                if (isbn == product.getISBN()) {
+                    isbnExists = true;
+                    iterator.remove();
+                    System.out.println("hai rimosso l'elemento: " + product);
+                    break;
+                }
+            }
+            if (!isbnExists) {
+                System.out.println("errore: il libro con ISBN " + isbn + " non esiste nella lista.");
+            }
+        } else System.out.println("arrivederci");
+
+        prodottoList.forEach(System.out::println);
 
         System.out.println("-----------ES3-------------");
-//        System.out.println("ricerca un elemento tramite il codice ISBN");
-//        int searchISBN = scn.nextInt();
-//        for (Prodotto product : prodottoList) {
-//            if (searchISBN == product.getISBN()) {
-//                isbnExists = true;
-//                System.out.println("Elemento trovato:");
-//                if (product instanceof Libri) {
-//                    Libri libro = (Libri) product;
-//                    System.out.println("Libro: " + libro);
-//                } else if (product instanceof Riviste) {
-//                    Riviste rivista = (Riviste) product;
-//                    System.out.println("Rivista: " + rivista);
-//                }
-//                break;
-//            }
-//        }
-//
-//        if (!isbnExists) {
-//            System.out.println("Errore: l'elemento con ISBN " + searchISBN + " non esiste nella lista.");
-//        } else System.out.println("Arrivederci.");
+        System.out.println("ricerca un elemento tramite il codice ISBN");
+        int searchISBN = scn.nextInt();
+        for (Prodotto product : prodottoList) {
+            if (searchISBN == product.getISBN()) {
+                isbnExists = true;
+                System.out.println("Elemento trovato:");
+                if (product instanceof Libri) {
+                    Libri libro = (Libri) product;
+                    System.out.println("Libro: " + libro);
+                } else if (product instanceof Riviste) {
+                    Riviste rivista = (Riviste) product;
+                    System.out.println("Rivista: " + rivista);
+                }
+                break;
+            }
+        }
+
+        if (!isbnExists) {
+            System.out.println("Errore: l'elemento con ISBN " + searchISBN + " non esiste nella lista.");
+        } else System.out.println("Arrivederci.");
 
         System.out.println("-----------ES4-------------");
         System.out.println("ricerca per anno pubblicazione");
@@ -248,35 +199,38 @@ public class Application {
         int months = scn.nextInt();
         System.out.println("anno:");
         int years = scn.nextInt();
-        for (Prodotto product : prodottoList){
-            if (LocalDate.of(years, months, days).equals(product.getLocalDate())){
-                System.out.println("abbiamo trovato un prodotto con data: " + LocalDate.of(years, months, days));
-            }else System.out.println("nessun riscontro");
-        }
+        LocalDate searchDate = LocalDate.of(years, months, days);
+        List<Prodotto> resultDate = prodottoList.stream()
+                        .filter(prodotto -> prodotto.getLocalDate().equals(searchDate))
+                                .collect(Collectors.toList());
+        if (resultDate.isEmpty()){
+            System.out.println("nessun riscontro per la data: " + searchDate);
+        }else resultDate.forEach(System.out::println);
 
         System.out.println("-----------ES5-------------");
-//        System.out.println("ricerca per autore:");
-//        String author = scn.nextLine();
-//        boolean authorExist = false;
-//        for (Prodotto product : prodottoList){
-//            if(author.equals(product.getAuthor().toLowerCase())){
-//                authorExist = true;
-//                System.out.println("Autore trovato! " + author);
-//            }else System.out.println("Autore non trovato"); break;
-//        }
+        System.out.println("ricerca per autore:");
+        String author = scn.nextLine();
+
+        List<Libri> resultAuthor = bookList.stream()
+                .filter(libri -> libri.getAuthor().equalsIgnoreCase(author))
+                        .collect(Collectors.toList());
+        if (resultAuthor.isEmpty()){
+            System.out.println("nessun autore trovato con il nome di: " + author);
+        } else resultAuthor.forEach(System.out::println);
+
         System.out.println("-----------ES6/ES7-------------");
-//        File file = new File("src/fileLibrary.txt");
-//        try{
-//            //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-//            System.out.println("archivio scritto");
-//            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-//            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-//            System.out.println("--------------ES7-LETTURA---------------");
-//            String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-//            System.out.println(contenutoArchivio);
-//        }catch (IOException e){
-//            System.out.println(e.getMessage());
-//        }
+        File file = new File("src/fileLibrary.txt");
+        try{
+            //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            System.out.println("archivio scritto");
+            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            System.out.println("--------------ES7-LETTURA---------------");
+            String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+            System.out.println(contenutoArchivio);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
 

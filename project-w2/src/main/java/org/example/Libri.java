@@ -22,45 +22,6 @@ public class Libri implements Prodotto{
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setPubblication(LocalDate pubblication) {
-        this.pubblication = pubblication;
-    }
-
-    public void setPagesnumber(int pagesnumber) {
-        this.pagesnumber = pagesnumber;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getGenere() {
-        return genere;
-    }
-
-    public void setGenere(String genere) {
-        this.genere = genere;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public LocalDate getPubblication() {
-        return pubblication;
-    }
-
-    public int getPagesnumber() {
-        return pagesnumber;
-    }
 
     public String getAuthor() {
         return author;
@@ -68,7 +29,7 @@ public class Libri implements Prodotto{
 
     @Override
     public LocalDate getLocalDate() {
-        return null;
+        return pubblication;
     }
 
     @Override

@@ -20,9 +20,7 @@ public class Riviste implements Prodotto{
 
     }
 
-    public Periodicita getPeriodicità() {
-        return periodicità;
-    }
+
 
     public int getISBN() {
         return ISBN;
@@ -35,20 +33,9 @@ public class Riviste implements Prodotto{
 
     @Override
     public LocalDate getLocalDate() {
-        return null;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public LocalDate getPubblication() {
         return pubblication;
     }
 
-    public int getPagesnumber() {
-        return pagesnumber;
-    }
 
     @Override
     public String toString() {
