@@ -33,6 +33,11 @@ public class Riviste implements Prodotto{
         return null;
     }
 
+    @Override
+    public LocalDate getLocalDate() {
+        return null;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -52,6 +57,7 @@ public class Riviste implements Prodotto{
                 ", title='" + title + '\'' +
                 ", pubblication=" + pubblication +
                 ", pagesnumber=" + pagesnumber +
+                ", periodicità=" + periodicità +
                 '}';
     }
 }

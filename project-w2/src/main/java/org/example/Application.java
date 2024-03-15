@@ -17,11 +17,11 @@ public class Application {
         Random rndm = new Random();
         Scanner scn = new Scanner(System.in);
         Libri libro1 = new Libri(1, faker.book().title(), LocalDate.of(2023, 4, 4), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
-        Libri libro2 = new Libri(2, faker.book().title(), LocalDate.of(2023, 5, 14), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), "fantasy");
-        Libri libro3 = new Libri(3, faker.book().title(), LocalDate.of(2022, 7, 3), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), "horror");
-        Libri libro4 = new Libri(4, faker.book().title(), LocalDate.of(2021, 12, 6), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), "thriller");
-        Libri libro5 = new Libri(5, faker.book().title(), LocalDate.of(2018, 8, 17), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), "action");
-        Libri libro6 = new Libri(6, faker.book().title(), LocalDate.of(2016, 10, 30), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), "action");
+        Libri libro2 = new Libri(2, faker.book().title(), LocalDate.of(2023, 5, 14), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
+        Libri libro3 = new Libri(3, faker.book().title(), LocalDate.of(2022, 7, 3), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
+        Libri libro4 = new Libri(4, faker.book().title(), LocalDate.of(2021, 12, 6), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
+        Libri libro5 = new Libri(5, faker.book().title(), LocalDate.of(2018, 8, 17), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
+        Libri libro6 = new Libri(6, faker.book().title(), LocalDate.of(2016, 10, 30), rndm.nextInt(50, 400), faker.lordOfTheRings().character(), faker.book().genre());
 
         Riviste riv1 = new Riviste(101, faker.book().title(), LocalDate.of(2020, 5, 5), rndm.nextInt(50, 500), Periodicita.MENSILE);
         Riviste riv2 = new Riviste(102, faker.book().title(), LocalDate.of(2021, 1, 15), rndm.nextInt(50, 500), Periodicita.SEMESTRALE);
@@ -56,9 +56,73 @@ public class Application {
         bookList.forEach(book -> System.out.println(book));
 
         System.out.println("-----------ES1-------------");
-        boolean isbnExists = false;
 //        System.out.println("vuoi aggiungere un libro o una rivista? l/r");
 //        String s = scn.nextLine();
+//
+//        if (s.equals("l")) {
+//            System.out.println("aggiungi un libro partendo dal nuovo codice univoco (ISBN):");
+//            int newISBN = scn.nextInt();
+//            scn.nextLine();
+//
+//            boolean isbnExists = bookList.stream()
+//                    .anyMatch(libro -> libro.getISBN() == newISBN);
+//
+//            if (isbnExists) {
+//                System.out.println("esiste già un libro con questo codice ISBN, riprova.");
+//            } else {
+//                System.out.println("inserisci il titolo:");
+//                String newTitle = scn.nextLine();
+//                System.out.println("inserisci la data di pubblicazione:");
+//                System.out.println("giorno:");
+//                int day = scn.nextInt();
+//                System.out.println("mese:");
+//                int month = scn.nextInt();
+//                System.out.println("anno:");
+//                int year = scn.nextInt();
+//                System.out.println("quante pagine ha il prodotto?");
+//                int pages = scn.nextInt();
+//                scn.nextLine();
+//
+//                System.out.println("ho trovato autore e genere del tuo libro.");
+//                String author = faker.dragonBall().character();
+//                String genres = faker.book().genre();
+//
+//                Libri nuovoLibro = new Libri(newISBN, newTitle, LocalDate.of(year, month, day), pages, author, genres);
+//                System.out.println("ecco il tuo nuovo libro: " + nuovoLibro);
+//                bookList.add(nuovoLibro);
+//            }
+//        } else if (s.equals("r")) {
+//            System.out.println("aggiungi una rivista partendo dal nuovo codice univoco (ISBN):");
+//            int newMagISBN = scn.nextInt();
+//            scn.nextLine();
+//
+//            boolean isbnExists = magazineList.stream()
+//                    .anyMatch(rivista -> rivista.getISBN() == newMagISBN);
+//
+//            if (isbnExists) {
+//                System.out.println("esiste già una rivista con questo codice ISBN, riprova.");
+//            } else {
+//                System.out.println("inserisci il titolo:");
+//                String newMagTitle = scn.nextLine();
+//                System.out.println("inserisci la data di pubblicazione:");
+//                System.out.println("giorno:");
+//                int dayMag = scn.nextInt();
+//                System.out.println("mese:");
+//                int monthMag = scn.nextInt();
+//                System.out.println("anno:");
+//                int yearMag = scn.nextInt();
+//                System.out.println("quante pagine ha il prodotto?");
+//                int pagesMag = scn.nextInt();
+//                scn.nextLine();
+//
+//                Riviste nuovaRivista = new Riviste(newMagISBN, newMagTitle, LocalDate.of(yearMag, monthMag, dayMag), pagesMag, Periodicita.SETTIMANALE);
+//                System.out.println("ecco la tua nuova rivista: " + nuovaRivista);
+//                magazineList.add(nuovaRivista);
+//            }
+//        } else {
+//            System.out.println("arrivederci.");
+//        }
+
 
 
 //        if (s.equals("l")){
@@ -177,6 +241,19 @@ public class Application {
 //        } else System.out.println("Arrivederci.");
 
         System.out.println("-----------ES4-------------");
+        System.out.println("ricerca per anno pubblicazione");
+        System.out.println("giorno:");
+        int days = scn.nextInt();
+        System.out.println("mese:");
+        int months = scn.nextInt();
+        System.out.println("anno:");
+        int years = scn.nextInt();
+        for (Prodotto product : prodottoList){
+            if (LocalDate.of(years, months, days).equals(product.getLocalDate())){
+                System.out.println("abbiamo trovato un prodotto con data: " + LocalDate.of(years, months, days));
+            }else System.out.println("nessun riscontro");
+        }
+
         System.out.println("-----------ES5-------------");
 //        System.out.println("ricerca per autore:");
 //        String author = scn.nextLine();
@@ -188,18 +265,18 @@ public class Application {
 //            }else System.out.println("Autore non trovato"); break;
 //        }
         System.out.println("-----------ES6/ES7-------------");
-        File file = new File("src/fileLibrary.txt");
-        try{
-            //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-            System.out.println("archivio scritto");
-            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-            System.out.println("--------------ES7-LETTURA---------------");
-            String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-            System.out.println(contenutoArchivio);
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+//        File file = new File("src/fileLibrary.txt");
+//        try{
+//            //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+//            System.out.println("archivio scritto");
+//            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+//            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+//            System.out.println("--------------ES7-LETTURA---------------");
+//            String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+//            System.out.println(contenutoArchivio);
+//        }catch (IOException e){
+//            System.out.println(e.getMessage());
+//        }
     }
 }
 

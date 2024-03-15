@@ -67,6 +67,11 @@ public class Libri implements Prodotto{
     }
 
     @Override
+    public LocalDate getLocalDate() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "Libri{" +
                 "ISBN=" + ISBN +
@@ -74,6 +79,7 @@ public class Libri implements Prodotto{
                 ", pubblication=" + pubblication +
                 ", pagesnumber=" + pagesnumber +
                 ", author='" + author + '\'' +
+                ", genere='" + genere + '\'' +
                 '}';
     }
 }
