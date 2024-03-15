@@ -1,8 +1,12 @@
 package org.example;
 
 import com.github.javafaker.Faker;
+import org.apache.commons.io.FileUtils;
 import period.Periodicita;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -47,9 +51,9 @@ public class Application {
         prodottoList.addAll(magazineList);
 
 
-//        magazineList.forEach(magazine -> System.out.println(magazine));
-//        System.out.println("------------------------------------------");
-//        bookList.forEach(book -> System.out.println(book));
+        magazineList.forEach(magazine -> System.out.println(magazine));
+        System.out.println("------------------------------------------");
+        bookList.forEach(book -> System.out.println(book));
 
         System.out.println("-----------ES1-------------");
         boolean isbnExists = false;
@@ -130,7 +134,7 @@ public class Application {
 //
 //        if (a.equals("s")){
 //            System.out.println("inserisci il codice univoco(ISBN):");
-        int isbn = scn.nextInt();
+//        int isbn = scn.nextInt();
 //
 //
 //            Iterator<Prodotto> iterator = prodottoList.iterator();
@@ -151,28 +155,51 @@ public class Application {
 //        prodottoList.forEach(System.out::println);
 
         System.out.println("-----------ES3-------------");
-        
-        System.out.println("ricerca un elemento tramite il codice ISBN");
-        int searchISBN = scn.nextInt();
-        for (Prodotto product : prodottoList) {
-            if (searchISBN == product.getISBN()) {
-                isbnExists = true;
-                System.out.println("Elemento trovato:");
-                if (product instanceof Libri) {
-                    Libri libro = (Libri) product;
-                    System.out.println("Libro: " + libro);
-                } else if (product instanceof Riviste) {
-                    Riviste rivista = (Riviste) product;
-                    System.out.println("Rivista: " + rivista);
-                }
-                break;
-            }
+//        System.out.println("ricerca un elemento tramite il codice ISBN");
+//        int searchISBN = scn.nextInt();
+//        for (Prodotto product : prodottoList) {
+//            if (searchISBN == product.getISBN()) {
+//                isbnExists = true;
+//                System.out.println("Elemento trovato:");
+//                if (product instanceof Libri) {
+//                    Libri libro = (Libri) product;
+//                    System.out.println("Libro: " + libro);
+//                } else if (product instanceof Riviste) {
+//                    Riviste rivista = (Riviste) product;
+//                    System.out.println("Rivista: " + rivista);
+//                }
+//                break;
+//            }
+//        }
+//
+//        if (!isbnExists) {
+//            System.out.println("Errore: l'elemento con ISBN " + searchISBN + " non esiste nella lista.");
+//        } else System.out.println("Arrivederci.");
+
+        System.out.println("-----------ES4-------------");
+        System.out.println("-----------ES5-------------");
+//        System.out.println("ricerca per autore:");
+//        String author = scn.nextLine();
+//        boolean authorExist = false;
+//        for (Prodotto product : prodottoList){
+//            if(author.equals(product.getAuthor().toLowerCase())){
+//                authorExist = true;
+//                System.out.println("Autore trovato! " + author);
+//            }else System.out.println("Autore non trovato"); break;
+//        }
+        System.out.println("-----------ES6/ES7-------------");
+        File file = new File("src/fileLibrary.txt");
+        try{
+            //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            System.out.println("archivio scritto");
+            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            System.out.println("--------------ES7-LETTURA---------------");
+            String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+            System.out.println(contenutoArchivio);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
         }
-
-        if (!isbnExists) {
-            System.out.println("Errore: l'elemento con ISBN " + searchISBN + " non esiste nella lista.");
-        } else System.out.println("Arrivederci.");
-
     }
 }
 

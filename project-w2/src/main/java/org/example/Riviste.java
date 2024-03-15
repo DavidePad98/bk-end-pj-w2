@@ -28,6 +28,11 @@ public class Riviste implements Prodotto{
         return ISBN;
     }
 
+    @Override
+    public String getAuthor() {
+        return null;
+    }
+
     public String getTitle() {
         return title;
     }
