@@ -226,10 +226,14 @@ public class Application {
         System.out.println("-----------ES6/ES7-------------");
         File file = new File("src/fileLibrary.txt");
         try{
+            //Prove scrittura:
+//            System.out.println("cosa ti va di scrivere?");
+//            String risp = scn.nextLine();
+//            FileUtils.writeStringToFile(file, risp.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
             //FileUtils.writeStringToFile(file, prodottoList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            //FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
+            FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
             System.out.println("archivio scritto");
-            FileUtils.writeStringToFile(file, bookList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
-            //FileUtils.writeStringToFile(file, magazineList.toString() + System.lineSeparator(), StandardCharsets.UTF_8);
             System.out.println("--------------ES7-LETTURA---------------");
             String contenutoArchivio = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
             System.out.println(contenutoArchivio);
